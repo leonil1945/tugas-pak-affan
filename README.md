@@ -1,2 +1,0 @@
-# tugas-pak-affan
-web
