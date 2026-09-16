@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulir Data Siswa</title>
+<style>
+    *{ box-sizing:border-box; }
+
+    body{
+        margin:0;
+        padding:32px 16px;
+        background:linear-gradient(135deg, #f0f4ff, #e6f7ff);
+        font-family: "Segoe UI", "Arial", sans-serif;
+        color:#333;
+        display:flex;
+        justify-content:center;
+    }
+
+    .sheet{
+        width:100%;
+        max-width:720px;
+        background:#ffffff;
+        padding:40px 48px 48px;
+        border-radius:12px;
+        box-shadow:0 6px 18px rgba(0,0,0,0.15);
+        border:1px solid #ddd;
+    }
+
+    header{
+        text-align:center;
+        border-bottom:3px solid #007BFF;
+        padding-bottom:14px;
+        margin-bottom:28px;
+    }
+
+    header h1{
+        font-size:26px;
+        margin:0;
+        font-weight:700;
+        color:#007BFF;
+    }
+
+    .field{
+        display:grid;
+        grid-template-columns: 170px 1fr;
+        align-items:baseline;
+        gap:10px;
+        margin-bottom:18px;
+    }
+
+    label{
+        font-size:14px;
+        color:#444;
+        padding-top:2px;
+        font-weight:600;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="password"],
+    select,
+    textarea{
+        width:100%;
+        border:1px solid #ccc;
+        border-radius:6px;
+        background:#fafafa;
+        font-family:inherit;
+        font-size:14.5px;
+        padding:8px 10px;
+        color:#333;
+        transition:all 0.3s ease;
+    }
+
+    input:focus, select:focus, textarea:focus{
+        border-color:#007BFF;
+        background:#ffffff;
+        box-shadow:0 0 6px rgba(0,123,255,0.4);
+        outline:none;
+    }
+
+    textarea{
+        resize:vertical;
+        min-height:70px;
+    }
+
+    select{
+        appearance:none;
+        -webkit-appearance:none;
+        background-image: linear-gradient(45deg, transparent 50%, #007BFF 50%), 
+                          linear-gradient(135deg, #007BFF 50%, transparent 50%);
+        background-position: calc(100% - 12px) 14px, calc(100% - 6px) 14px;
+        background-size: 6px 6px, 6px 6px;
+        background-repeat:no-repeat;
+        padding-right:28px;
+    }
+
+    .inline-options{
+        display:flex;
+        flex-wrap:wrap;
+        gap:18px;
+        font-size:14px;
+    }
+
+    .inline-options label{
+        display:flex;
+        align-items:center;
+        gap:6px;
+        cursor:pointer;
+        background:#f9f9f9;
+        padding:6px 10px;
+        border-radius:6px;
+        transition:background 0.3s;
+    }
+
+    .inline-options label:hover{
+        background:#e6f2ff;
+    }
+
+    .inline-options input{ margin:0; accent-color:#007BFF; }
+
+    .actions{
+        display:flex;
+        justify-content:flex-end;
+        margin-top:28px;
+        border-top:1px solid #ddd;
+        padding-top:20px;
+    }
+
+    button{
+        background:#007BFF;
+        color:#ffffff;
+        border:none;
+        border-radius:6px;
+        padding:12px 32px;
+        font-family:inherit;
+        font-size:15px;
+        cursor:pointer;
+        transition:background 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover{ background:#0056b3; transform:scale(1.05); }
+
+    @media (max-width: 560px){
+        .sheet{ padding:28px 20px 36px; }
+        .field{ grid-template-columns:1fr; gap:6px; }
+    }
+</style>
+</head>
+
+<body>
+<div class="sheet">
+
+    <header>
+        <h1>Formulir Data Siswa</h1>
+    </header>
+
+    <form>
+        <div class="field">
+            <label for="nama">Nama Lengkap *</label>
+            <input type="text" id="nama" name="nama" required>
+        </div>
+
+        <div class="field">
+            <label>Jenis Kelamin *</label>
+            <div class="inline-options">
+                <label><input type="radio" name="jk" value="Laki-laki" required> Laki-laki</label>
+                <label><input type="radio" name="jk" value="Perempuan" required> Perempuan</label>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="hp">No. Handphone *</label>
+            <input type="tel" id="hp" name="hp" pattern="[0-9]{10,13}" placeholder="08xxxxxxxxxx" required>
+        </div>
+
+        <div class="field">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="field">
+            <label for="pass">Password Akun *</label>
+            <input type="password" id="pass" name="pass" minlength="6" required>
+        </div>
+
+        <div class="field">
+            <label for="jurusan">Pilih Jurusan *</label>
+            <select id="jurusan" name="jurusan" required>
+                <option value="" disabled selected>-- Pilih Jurusan --</option>
+                <option>REKAYASA PERANGKAT LUNAK</option>
+                <option>TEKNIK KOMPUTER JARINGAN</option>
+                <option>LAYANAN PERBANKAN</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Absensi Hari Ini *</label>
+            <select id="absensi" name="absensi" required>
+                <option value="" disabled selected>-- Pilih Status --</option>
+                <option value="Hadir">Hadir</option>
+                <option value="Izin">Izin</option>
+                <option value="Sakit">Sakit</option>
+                <option value="Alpa">Alpa</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label for="keterangan">Keterangan Absensi</label>
+            <textarea id="keterangan" name="keterangan" placeholder="Isi jika status izin/sakit"></textarea>
+        </div>
+
+        <div class="field">
+            <label>Hobi</label>
+            <div class="inline-options">
+                <label><input type="checkbox" name="hobi" value="Membaca"> Membaca</label>
+                <label><input type="checkbox" name="hobi" value="Menulis"> Menulis</label>
+                <label><input type="checkbox" name="hobi" value="Olahraga"> Olahraga</label>
+                <label><input type="checkbox" name="hobi" value="Musik"> Musik</label>
+                <label><input type="checkbox" name="hobi" value="Komputer"> Komputer</label>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button type="submit">Kirim Formulir</button>
+        </div>
+    </form>
+</div>
+</body>
+
+</html>
